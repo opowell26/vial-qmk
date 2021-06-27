@@ -103,10 +103,11 @@
             },
             {
                 "type": "string",
-                "pattern": "^GP\\d{1,2}$"
+                "pattern": "^\\d{1,2}$"
             },
             {
-                "type": "integer"
+                "type": "number",
+                "multipleOf": 1
             },
             {
                 "type": "null"

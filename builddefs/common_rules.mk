@@ -30,9 +30,26 @@ FORMAT = ihex
 # Optimization level, can be [0, 1, 2, 3, s].
 OPT ?= s
 
-# Compiler flag to set the C and C++ language standard level
+# Compiler flag to set the C Standard level.
+#     c89   = "ANSI" C
+#     gnu89 = c89 plus GCC extensions
+#     c99   = ISO C99 standard (not yet fully implemented)
+#     gnu99 = c99 plus GCC extensions
 CSTANDARD = -std=gnu11
-CXXSTANDARD = -std=gnu++14
+
+
+# Place -D or -U options here for C sources
+#CDEFS +=
+
+
+# Place -D or -U options here for ASM sources
+#ADEFS +=
+
+
+# Place -D or -U options here for C++ sources
+#CXXDEFS += -D__STDC_LIMIT_MACROS
+#CXXDEFS += -D__STDC_CONSTANT_MACROS
+#CXXDEFS +=
 
 # Speed up recompilations by opt-in usage of ccache
 USE_CCACHE ?= no
@@ -47,8 +64,12 @@ ifeq ($(strip $(LTO_ENABLE)), yes)
         $(info Enabling LTO on arm_atsam-targeting boards is known to have a high likelihood of failure.)
         $(info If unsure, set LTO_ENABLE = no.)
     endif
-    CDEFS += -flto
-    CDEFS += -DLTO_ENABLE
+    ifeq ($(PLATFORM),PICO_SDK)
+        $(info LTO is not available for this platform. Disabled automatically.)
+    else
+		CDEFS += -flto
+		CDEFS += -DLTO_ENABLE
+	endif
 endif
 
 DEBUG_ENABLE ?= yes
