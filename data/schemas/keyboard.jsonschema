@@ -86,30 +86,7 @@
         },
         "bootloader": {
             "type": "string",
-            "enum": [
-                "vibl",
-                "atmel-dfu",
-                "bootloadhid",
-                "bootloadHID",
-                "caterina",
-                "custom",
-                "gd32v-dfu",
-                "halfkay",
-                "kiibohd",
-                "lufa-dfu",
-                "lufa-ms",
-                "md-boot",
-                "qmk-dfu",
-                "qmk-hid",
-                "rp2040",
-                "stm32-dfu",
-                "stm32duino",
-                "tinyuf2",
-                "unknown",
-                "usbasploader",
-                "USBasp",
-                "wb32-dfu"
-            ]
+            "enum": ["atmel-dfu", "bootloadhid", "bootloadHID", "custom", "caterina", "halfkay", "kiibohd", "lufa-dfu", "lufa-ms", "md-boot", "qmk-dfu", "qmk-hid", "stm32-dfu", "stm32duino", "gd32v-dfu", "wb32-dfu", "unknown", "usbasploader", "USBasp", "tinyuf2", "vibl", "RP2040"],
         },
         "bootloader_instructions": {
             "type": "string",
